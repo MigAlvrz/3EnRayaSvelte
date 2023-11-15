@@ -1,0 +1,42 @@
+body {
+    height: 100vh;
+    background:linear-gradient( #a8516e, #b86e84);
+    color: #f5f0f0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.tablero {
+    border-radius: 25px;
+    border: #f5f0f0 solid 5px;
+    width: 50%;
+    height: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    .casilla{
+        height: 30%;
+        width: 30%;
+        background: none;
+        color: #f5f0f0;
+        font-size: 8cap;
+        border: #f5f0f0 solid 5px;
+    }
+    .firstRow {
+        border-top: none;
+    }
+    .bottomRow {
+        border-bottom: none;
+    }
+    .leftRow {
+        border-left: none;
+    }
+    .rightRow {
+        border-right: none;
+    }
+    }
