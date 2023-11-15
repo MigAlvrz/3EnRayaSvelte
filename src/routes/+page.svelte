@@ -1,6 +1,4 @@
 <script>
-    import { Router } from "svelte-routing";
-    import Header from "./Header.svelte";
 
 </script>
 

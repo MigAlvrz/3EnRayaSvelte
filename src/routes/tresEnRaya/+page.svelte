@@ -2,19 +2,38 @@
     import type { PageData } from './$types';
     
     export let data: PageData;
-    $: ({ casillas, turnoDe, ganador } = data);
+    $: ({ casillas, turnoDe, ganador, resPosibles } = data);
     let leftRows = [0,3,6]
     let rightRows = [2,5,8]
     let darValor = (i) => {
         casillas[i] = turnoDe;
         casillas = [...casillas];
-        turnoDe = turnoDe == "X" ? "O" : "X"  
-        ganador = "O"
+        checkGanador()
+        turnoDe = turnoDe == "X" ? "O" : "X"
     }
     let restart = () => {
         casillas = new Array(9).fill(null);
         ganador = null;
         turnoDe = "X";
+    }
+
+    let checkGanador = () => {
+        resPosibles.map((e) => {
+        const [a, b, c] = e
+        if (
+            casillas[a] && 
+            casillas[a] === casillas[b] &&
+            casillas[a] === casillas[c]
+        ) {
+            console.log(casillas[a]);
+            
+            ganador = casillas[a]
+        }
+    })
+
+    if (!casillas.some(el => el === null) && ganador === null){
+        ganador = "empate"
+    }
     }
 </script>
 
@@ -30,7 +49,7 @@
     {/key}
 </div>
 {#if ganador}
-    <h2>{ganador} ha ganado la partida!</h2>
+    <h2>{ganador != "empate" ? ganador + ' ha ganado la partida!' : 'Ha sido un empate!'}</h2>
     <button class="playAgain" on:click={restart}>
         Volver a jugar
     </button>
