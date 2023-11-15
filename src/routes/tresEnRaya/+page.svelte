@@ -2,16 +2,19 @@
     import type { PageData } from './$types';
     
     export let data: PageData;
-    $: ({ casillas, turnoDe } = data);
+    $: ({ casillas, turnoDe, ganador } = data);
     let leftRows = [0,3,6]
     let rightRows = [2,5,8]
     let darValor = (i) => {
-        console.log("hey");
-        
         casillas[i] = turnoDe;
         casillas = [...casillas];
-        turnoDe = turnoDe == "X" ? "O" : "X"
-        
+        turnoDe = turnoDe == "X" ? "O" : "X"  
+        ganador = "O"
+    }
+    let restart = () => {
+        casillas = new Array(9).fill(null);
+        ganador = null;
+        turnoDe = "X";
     }
 </script>
 
@@ -25,5 +28,10 @@
         </button>
     {/each}
     {/key}
-
 </div>
+{#if ganador}
+    <h2>{ganador} ha ganado la partida!</h2>
+    <button class="playAgain" on:click={restart}>
+        Volver a jugar
+    </button>
+{/if}

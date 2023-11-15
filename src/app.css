@@ -19,7 +19,7 @@ body {
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    .casilla{
+    .casilla {
         height: 30%;
         width: 30%;
         background: none;
@@ -39,4 +39,15 @@ body {
     .rightRow {
         border-right: none;
     }
+    }
+
+    .playAgain {
+        border-radius: 25px;
+        border: #f5f0f0 solid 5px;
+        background: none;
+        color: #f5f0f0;
+        padding: 1%;
+        margin: 0;
+        font-size: larger;
+        font-weight: 700;
     }
